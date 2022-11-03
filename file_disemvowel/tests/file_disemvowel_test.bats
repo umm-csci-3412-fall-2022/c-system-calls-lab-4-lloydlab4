@@ -23,6 +23,12 @@ teardown() {
     [ "$status" -eq 0 ]
 }
 
+@test "file_disemvowel works with vowelless files" {
+    ./file_disemvowel < tests/non_vowel_input > "$BATS_TMPDIR"/non_vowel_output
+    run diff -wbB tests/non_vowel_input "$BATS_TMPDIR"/non_vowel_output
+    [ "$status" -eq 0 ]
+}
+
 @test "file_disemvowel works with standard input and standard output" {
     ./file_disemvowel < tests/small_input > "$BATS_TMPDIR"/small_output
     run diff -wbB tests/small_output "$BATS_TMPDIR"/small_output
