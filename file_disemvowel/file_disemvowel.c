@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#define BUF_SIZE 128 
+#define BUF_SIZE 1024 
 
 bool is_vowel(char c) {
     /*
