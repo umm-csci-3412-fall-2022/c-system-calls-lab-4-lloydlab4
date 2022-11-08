@@ -49,16 +49,17 @@ void disemvowel(FILE* inputFile, FILE* outputFile) {
      * in a buffer of data, copy the non-vowels to the output buffer, and
      * use fwrite to write that out.
      */
+
     char* in_buf = (char*) calloc(BUF_SIZE, sizeof(char));
     char* out_buf = (char*) calloc(BUF_SIZE, sizeof(char));
     bool run = true;
     for(int j=0; run; j++) {
-        if(fgets(in_buf, BUF_SIZE-1, inputFile) == NULL) {
+        if(fgets(in_buf, BUF_SIZE-2, inputFile) == NULL) {
             run = false;
             free(in_buf);
             free(out_buf);
         } else {
-            int len = copy_non_vowels(BUF_SIZE-1, in_buf, out_buf);
+            int len = copy_non_vowels(BUF_SIZE-2, in_buf, out_buf);
             for(int i=0; i<len; i++) {
                 if(out_buf[i] != '\0') {
                     fputc(out_buf[i], outputFile);
