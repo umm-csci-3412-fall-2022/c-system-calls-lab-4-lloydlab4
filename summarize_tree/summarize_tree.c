@@ -51,6 +51,7 @@ void process_directory(const char* path) {
     perror(path);
     exit(1);
   } else {
+    closedir(dir);
     chdir("..");
   }
 }
